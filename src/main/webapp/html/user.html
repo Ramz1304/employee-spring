@@ -1,0 +1,148 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+<br>
+<div class="container">
+
+    <h3>Admin > Users</h3>
+    <br>
+
+    <!-- Top row with form-->
+    <div class="row">
+        <div class="col-12">
+            <form class="form-inline" id="user-form">
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-2 col-form-label">Email</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="email" id="inputEmail" placeholder="Enter Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-md-2 col-form-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="password" id="inputPassword"
+                               placeholder="Enter Password" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputRole" class="col-md-2 col-form-label">Role</label>
+                    <div class="col-md-10">
+                        <input list="list" class="form-control" name="role" id="inputRole" placeholder="Enter Role"
+                               autocomplete="off">
+                        <datalist id="list">
+                            <option value="Admin"></option>
+                            <option value="Standard"></option>
+                        </datalist>
+                    </div>
+                </div>
+                <button type="button" class="btn" id="add-user"><i class="fa fa-plus" style="color:blue;"
+                                                                   aria-hidden="true"></i></button>
+                &nbsp;
+                <button type="button" class="btn" id="refresh-data"><i class="fa fa-refresh" style="color:green;"
+                                                                       aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Blank Row -->
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+
+        <!-- Table -->
+        <div class="col-12">
+            <table class="table" id="user-table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ram</td>
+                    <td>role1</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Rox</td>
+                    <td>role2</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>saur</td>
+                    <td>role3</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- user Edit Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="edit-user-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #ADF7FB;">
+                    <h5 class="modal-title">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="user-edit-form">
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-2 col-form-label">Email</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputRole" class="col-md-2 col-form-label">Role</label>
+                            <div class="col-md-10">
+                                <input list="list" class="form-control" name="role" id="inputRole"
+                                       placeholder="Enter Role" autocomplete="off">
+                                <datalist id="list">
+                                    <option value="Admin"></option>
+                                    <option value="Standard"></option>
+                                </datalist>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal"><i class="fa fa-ban" style="color:red;"
+                                                                              aria-hidden="true"></i></button>
+                    <button type="button" class="btn" id="update-user"><i class="fa fa-check" style="color:green;"
+                                                                          aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/user.js}"/>
+</script>
+
+</body>
+
+</html>

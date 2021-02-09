@@ -1,43 +1,36 @@
 package employee.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import employee.model.InfoData;
-
 @Controller
-public class UiController {
+public class UiController extends AbstractUiController {
 
-	@Value("${app.baseUrl}")
-	private String baseUrl;
+    // WEBSITE PAGES
+    @RequestMapping(value = "")
+    public ModelAndView index() {
+        return mav("index.html");
+    }
 
-	@RequestMapping(value = "")
-	public String index() {
-		return "index.html";
-	}
+    @RequestMapping(value = "/site/login")
+    public ModelAndView login() {
+        return mav("login.html");
+    }
 
-	@RequestMapping(value = "/ui/home")
-	public ModelAndView home() {
-		return mav("home.html");
-	}
+    @RequestMapping(value = "/site/logout")
+    public ModelAndView logout() {
+        return mav("logout.html");
+    }
 
-	@RequestMapping(value = "/ui/features")
-	public ModelAndView features() {
-		return mav("features.html");
-	}
+    @RequestMapping(value = "/site/pricing")
+    public ModelAndView pricing() {
+        return mav("pricing.html");
+    }
 
-	@RequestMapping(value = "/ui/pricing")
-	public ModelAndView pricing() {
-		return mav("pricing.html");
-	}
-
-	private ModelAndView mav(String page) {
-		ModelAndView mav = new ModelAndView(page);
-		mav.addObject("info", new InfoData());
-		mav.addObject("baseUrl", baseUrl);
-		return mav;
-	}
+    @RequestMapping(value = "/site/features")
+    public ModelAndView features() {
+        return mav("features.html");
+    }
 
 }

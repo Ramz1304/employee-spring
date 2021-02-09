@@ -1,5 +1,4 @@
-package employee.Service;
-
+package employee.service;
 
 
 import org.springframework.context.annotation.ComponentScan;
@@ -16,12 +15,12 @@ import employee.spring.SpringConfig;
 
 @Configuration
 @ComponentScan(//
-		basePackages = { "employee" }, //
-		excludeFilters = @Filter(type = FilterType.ASSIGNABLE_TYPE, value = { SpringConfig.class })//
-		)
+        basePackages = {"employee"}, //
+        excludeFilters = @Filter(type = FilterType.ASSIGNABLE_TYPE, value = {SpringConfig.class})//
+)
 @PropertySources({//
-	   @PropertySource(value = "classpath:./employee/test.properties", ignoreResourceNotFound = true) //
-	   })
+        @PropertySource(value = "classpath:./employee/test.properties", ignoreResourceNotFound = true) //
+})
 
 public class QaConfig {
 

@@ -1,7 +1,6 @@
 package employee.dao;
 
 
-		
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,48 +13,42 @@ import org.springframework.stereotype.Repository;
 
 import employee.pojo.EmployeePojo;
 
+
 @Repository
-public class EmployeeDao {
+public class EmployeeDao extends AbstractDao {
 
-	private static String delete_id = "delete from EmployeePojo p where id=:id";
-	private static String select_id = "select p from EmployeePojo p where id=:id";
-	private static String select_all = "select p from EmployeePojo p";
-    private int id;
-	@PersistenceContext
-	private EntityManager em;
 
-	@Transactional
-	public void insert(EmployeePojo p) {
-		id++;
-		p.setId(id);
-		em.persist(p);
-	}
-	
-	public int delete(int id) {
-		Query query = em.createQuery(delete_id);
-		query.setParameter("id", id);
-		return query.executeUpdate();
-	}
-	
-	
-	public EmployeePojo select(int id) {
-		
-		return em.find(EmployeePojo.class,id);
-		/*TypedQuery<EmployeePojo> query = getQuery(select_id);
-		query.setParameter("id", id);
-		return query.getSingleResult();*/
-	}
-	
-	public List<EmployeePojo> selectAll() {
-		TypedQuery<EmployeePojo> query = getQuery(select_all);
-		return query.getResultList();
-	}
-	
-	public void update(EmployeePojo p) {
-	}
+    private static String select_all = "select p from EmployeePojo p";
 
-	TypedQuery<EmployeePojo> getQuery(String jpql) {
-		return em.createQuery(jpql, EmployeePojo.class);
-	}
+    @PersistenceContext
+    private EntityManager em;
+
+    @Transactional
+    public void insert(EmployeePojo employee) {
+        em.persist(employee);
+    }
+
+    public EmployeePojo delete(int id) {
+        EmployeePojo employee = em.find(EmployeePojo.class, id);
+        em.remove(employee);
+        return employee;
+    }
+
+
+    public EmployeePojo select(int id) {
+
+        return em.find(EmployeePojo.class, id);
+
+    }
+
+    public List<EmployeePojo> selectAll() {
+        TypedQuery<EmployeePojo> query = getQuery(select_all, EmployeePojo.class);
+        return query.getResultList();
+    }
+
+
+    public void update(EmployeePojo employee) {
+    }
+
 
 }

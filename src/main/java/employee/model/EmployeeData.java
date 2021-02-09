@@ -1,16 +1,16 @@
 package employee.model;
 
-public class EmployeeData extends EmployeeForm{
-	 
-	private int id;
+public class EmployeeData extends EmployeeForm {
 
-	public int getId() {
-		return id;
-	}
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 }

@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_app_navbar"></nav>
+<br>
+<div class="container">
+
+    <h3>User > Employee</h3>
+    <br>
+    <!-- Top row with form-->
+    <div class="row">
+        <div class="col-12">
+            <form class="form-inline" id="employee-form">
+                <div class="form-group">
+                    <label for="inputName" class="col-md-2 col-form-label">Name</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="name" id="inputName" placeholder="Enter Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAge" class="col-md-2 col-form-label">Age</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="age" id="inputAge" placeholder="Enter Age">
+                    </div>
+                </div>
+                <button type="button" class="btn" id="add-employee"><i class="fa fa-plus" style="color:blue;"
+                                                                       aria-hidden="true"></i></button>
+                &nbsp;
+                <button type="button" class="btn" id="refresh-data"><i class="fa fa-refresh" style="color:green;"
+                                                                       aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Blank Row -->
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+
+        <!-- Table -->
+        <div class="col-12">
+            <table class="table" id="employee-table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>eren</td>
+                    <td>15</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ramz</td>
+                    <td>31</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Ram</td>
+                    <td>7</td>
+                    <td>Edit | Delete</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Employee Edit Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="edit-employee-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #ADF7FB;">
+                    <h5 class="modal-title">Edit Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="employee-edit-form">
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-2 col-form-label">Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAge" class="col-md-2 col-form-label">Age</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="age" placeholder="Enter Age">
+                            </div>
+                        </div>
+                        <input type="hidden" name="id">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal"><i class="fa fa-ban" style="color:red;"
+                                                                              aria-hidden="true"></i></button>
+                    <button type="button" class="btn" id="update-employee"><i class="fa fa-check" style="color:green;"
+                                                                              aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/employee.js}"/>
+</script>
+
+
+</body>
+
+</html>

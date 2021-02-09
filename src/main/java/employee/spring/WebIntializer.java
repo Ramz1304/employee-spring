@@ -1,24 +1,25 @@
 package employee.spring;
+
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebIntializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		
-		return new Class[] {};
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		
-		return new Class[] {SpringConfig.class};
-	}
+        return new Class[]{};
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+
+        return new Class[]{SpringConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 
 }
